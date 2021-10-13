@@ -67,7 +67,7 @@ model = {
 
     switch (data.do) {
       case 'init':
-        this.items = data.items || []; // Astuce : si data.items est undefined, renvoie []
+        this.items = data.items || []; // Si data.items est undefined, renvoie []
         break;
       case 'addItem':
         this.items.push({ text: data.item, done: false });
@@ -102,7 +102,6 @@ state = {
     model.items.forEach(v => v.done ? cpt++ : null);
     this.hasDoneItems = cpt > 0 ? true : false;
     this.samRepresent(model);
-    // this.samNap(model);
   },
 
   // Met à jour l'état de l'application, construit le code HTML correspondant,
@@ -129,8 +128,6 @@ view = {
 
   // Renvoit le HTML
   todoUI(model, state) {
-
-    //TODO: compléter l'interface afin qu'elle affiche les tâches et qu'on puisse les gérer
 
     const li_items = model.isEditMode ? this.editItemsUI(model, state) : this.listItemsUI(model, state);
     return `
